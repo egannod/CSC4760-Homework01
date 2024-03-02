@@ -17,8 +17,7 @@ int main(int argc, char* argv[]) {
       prob_2(i,j) = 1000 * i * j;
     });
   });
-  std::cout << prob_2(0,0) << std::endl;
-
+  std::cout << prob_2(1,1) << std::endl;
   }
 
   Kokkos::finalize();
