@@ -9,13 +9,12 @@ int main(int argc, char* argv[]) {
   // set n and m, you can change these values
   int n,m = 4;
   // Make View
-  Kokkos::View<int*> myView("myView", n);
+  Kokkos::View<int**> myView("myView", n, m);
   // set values to 1000 * i * j;
-  Kokkos::parallel_for("iterator", n, KOKKOS_LAMBDA(const int& i) {
-    myView(i) = i;
-  });
-  Kokkos::parallel_for("m", n, KOKKOS_LAMBDA(const int& i) {
-    printf("myView(%d) = %d\n", i, myView(i));
+  Kokkos::parallel_for("iterator i", n, KOKKOS_LAMBDA(const int& i) {
+    Kokkos::parallel_for("iterator j", m, KOKKOS_LAMBDA(const int& j) {
+      myView(i,j) = 1000 * i * j;
+    });
   });
   }
   Kokkos::finalize();
