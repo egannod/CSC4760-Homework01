@@ -10,15 +10,13 @@ int main(int argc, char* argv[]) {
   // set n and m, you can change these values
   int n,m = 4;
   // Make View
-  Kokkos::View<int**> prob_2("prob_2", n, m);
-  }
+  Kokkos::View<int*> prob_2("prob_2", n);
   // set values to 1000 * i * j;
-  Kokkos::parallel_for("Loop n", n, KOKKOS_LAMBDA(const int& i) {
-    Kokkos::parallel_for("Loop m", m, KOKKOS_LAMBDA(const int& j) {
-      prob_2(i,j) = 1000 * i * j;
-    });
+  Kokkos::parallel_for("prob_2", n, KOKKOS_LAMBDA(const int i) {
+    prob_2(i) = 1000 * i;
   });
-  printf("prob_2(15, 15) = %d\n", prob_2(15,15));
+  std::cout << prob_2(1) << endl;
+  }
 
   Kokkos::finalize();
 }
