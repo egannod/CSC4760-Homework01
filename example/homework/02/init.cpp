@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
     std::cout << i << std::endl;
     prob_2(i) = i;
   });
-  for (int i=0; i<n; i++){
+  for (int i=1; i<=n; i++){
     prob_2(i) = 1000 * i;
   }
   std::cout << prob_2(4) << std::endl;
