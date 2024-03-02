@@ -16,9 +16,8 @@ int main(int argc, char* argv[]) {
     std::cout << i << std::endl;
     prob_2(i) = i;
   });
-  Kokkos::fence();
+  prob_2(1) = 1000 * 1 * 1;
   std::cout << prob_2(1) << std::endl;
   }
-
   Kokkos::finalize();
 }
