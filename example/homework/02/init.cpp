@@ -12,12 +12,13 @@ int main(int argc, char* argv[]) {
   // Make View
   Kokkos::View<int**> prob_2("prob_2", n, m);
   // set values to 1000 * i * j;
-  for (int i=0; i < n; i++){
-    for (int j=0; j < m; j++){
-      prob_2(i,j) = 1000 * i * j;
-    }
-  }
-  std::cout << "prob_2 at 16,16: " << prob_2(16,16) << std::endl;
+  //for (int i=0; i < n; i++){
+  //  for (int j=0; j < m; j++){
+  //    prob_2(i,j) = 1000 * i * j;
+  //  }
+  //}
+  prob_2(16, 16) = 1000 * 16 * 16;
+  std::cout << "prob_2 at 16, 16: " << prob_2(16,16) << std::endl;
 
   }
 
