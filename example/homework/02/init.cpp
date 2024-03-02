@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     });
   });
   Kokkos::fence();
-  printf("prob_2(%d,%d) = %d\n", i, j, prob_2(i,j));
+  printf("prob_2(15, 15) = %d\n", prob_2(15,15));
   }
 
   Kokkos::finalize();
