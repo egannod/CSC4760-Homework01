@@ -15,10 +15,10 @@ int main(int argc, char* argv[]) {
   Kokkos::parallel_for("Loop n", n, KOKKOS_LAMBDA(const int& i) {
     Kokkos::parallel_for("Loop m", m, KOKKOS_LAMBDA(const int& j) {
       prob_2(i,j) = 1000 * i * j;
-      printf("prob_2(%d,%d) = %d\n", i, j, prob_2(i,j));
     });
   });
-  printf("Hello\n");
+  Kokkos::fence();
+  printf("prob_2(%d,%d) = %d\n", i, j, prob_2(i,j));
   }
 
   Kokkos::finalize();
