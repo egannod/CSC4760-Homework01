@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
   for (int i=1; i<=n; i++){
     prob_2(i) = 1000 * i;
   }
-  std::cout << prob_2(4) << std::endl;
+  std::cout << prob_2(3) << std::endl;
   }
   Kokkos::finalize();
 }
