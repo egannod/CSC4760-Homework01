@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
       prob_2(i,j) = 1000 * i * j;
     }
   }
-  std::cout << "prob_2 at 16, 16: " << prob_2(15,15) << std::endl;
+  std::cout << "prob_2 at 16, 16: " << prob_2(1,1) << std::endl;
 
   }
 
