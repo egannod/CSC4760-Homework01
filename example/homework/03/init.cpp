@@ -7,9 +7,10 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // Make View
+  Kokkos::View<int[5][7][12]*> view("view", n);
   
   // print name
-  
+  printf("View name: %s\n", view.label()); 
   }
   Kokkos::finalize();
 }
