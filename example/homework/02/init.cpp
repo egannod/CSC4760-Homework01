@@ -15,9 +15,10 @@ int main(int argc, char* argv[]) {
   for (int i=0; i < n; i++){
     for (int j=0; j < m; j++){
       prob_2(i,j) = 1000 * i * j;
-      std::cout << "prob_2 at " << i << ", " << j << ": " << prob_2(i,j) << std::endl;
     }
   }
+  std::cout << "prob_2 at 16,16: " << prob_2(16,16) << std::endl;
+
   }
 
   Kokkos::finalize();
