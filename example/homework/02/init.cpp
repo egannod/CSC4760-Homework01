@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
       printf("prob_2(%d,%d) = %d\n", i, j, prob_2(i,j));
     });
   });
+  printf("Hello\n");
   }
 
   Kokkos::finalize();
