@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
   Kokkos::parallel_for("prob_2", n, m, KOKKOS_LAMBDA(int i, int j) {
     prob_2(i, j) = 1000 * i * j;
   });
+  std::cout << prob_2(0,0) << std::endl;
 
   }
 
