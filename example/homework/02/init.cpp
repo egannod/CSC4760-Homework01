@@ -5,8 +5,7 @@
 // Problem: Make an n ∗ m View where each index equals 1000 ∗ i ∗ j
 
 int main(int argc, char* argv[]) {
-  Kokkos::initialize(argc, argv);
-  {
+  Kokkos::initialize(/*argc, argv*/);
   // set n and m, you can change these values
   int n,m = 4;
   // Make View
@@ -15,8 +14,7 @@ int main(int argc, char* argv[]) {
   Kokkos::parallel_for("iterator", n, KOKKOS_LAMBDA(const int& i) {
     prob_2(i) = i * i;
   });
-  std::cout <<prob_2.label() << prob_2(1) << std::endl;
-  }
+  std::cout << prob_2(1) << std::endl;
 
   Kokkos::finalize();
 }
