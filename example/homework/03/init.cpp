@@ -1,5 +1,6 @@
 #include <Kokkos_Core.hpp>
 #include <cstdio>
+#include <iostream>
 
 // Declare a 5 ∗ 7 ∗ 12 ∗ n View
 
@@ -11,7 +12,7 @@ int main(int argc, char* argv[]) {
   Kokkos::View<int****> view("view", 5, 7, 12, n);
   
   // print name
-  printf("View name: %s\n", view.label()); 
+  std::cout << "View label: " << view.label() << std::endl;
   }
   Kokkos::finalize();
 }
