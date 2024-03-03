@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
   {
   // Make View and create values
   int lval = 0;
-  Kokkos::View<int*> view_4("view_4", 10);
+  Kokkos::View<int*> view_4("view_4", 8);
 
   for(int i=0; i<view_4.extent(0); i++){
     view_4(i) = i*i;
