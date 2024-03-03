@@ -24,5 +24,6 @@ int main(int argc, char* argv[]) {
       std::cout << "View at index " << i << "," << j << ": " << myView(i,j) << std::endl;
     }
   }
+  }
   Kokkos::finalize();
 }
