@@ -18,7 +18,6 @@ int main(int argc, char* argv[]) {
       myView(i,j) = 1000 * i * j;
     }
   }
-  Kokkos::fence();
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
       std::cout << "View at index " << i << "," << j << ": " << myView(i,j) << std::endl;
