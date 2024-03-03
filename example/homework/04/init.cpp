@@ -17,11 +17,10 @@ int main(int argc, char* argv[]) {
   
   // Do a parallel reduction
   Kokkos::parallel_reduce("greatest value", view_4.extent(0), KOKKOS_LAMBDA(const int& i, int& val){
-    std::cout << "view_4(" << i << ") = " << view_4(i) << " val = " << val << std::endl;
     if(view_4(i) > val){
       val = view_4(i);
     }
-    std::cout << "val = " << val << std::endl;
+    result = val;
   }, result);
   std::cout << "The greatest value in the view: " << result << std::endl;
   }
