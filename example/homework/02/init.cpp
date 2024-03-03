@@ -14,13 +14,15 @@ int main(int argc, char* argv[]) {
   Kokkos::View<int**> myView("myView", n, m);
   // set values to 1000 * i * j;
   for(int i=0; i<myView.extent(0); i++){
-    myView(i,0) = 1000 * i;
+    for(int j=0; j<myView.extent(1); j++){
+      myView(i,j) = 1000 * i * j;
+    }
   }
   Kokkos::fence();
-  std::cout << "View at index 0: " << myView(0,0) << std::endl;
-  std::cout << "View at index 1: " << myView(1,0) << std::endl;
-  std::cout << "View at index 2: " << myView(2,0) << std::endl;
-  std::cout << "View at index 3: " << myView(3,0) << std::endl;
+  std::cout << "View at index 0,0: " << myView(0,0) << std::endl;
+  std::cout << "View at index 1,1: " << myView(1,1) << std::endl;
+  std::cout << "View at index 2,2: " << myView(2,2) << std::endl;
+  std::cout << "View at index 3,3: " << myView(3,3) << std::endl;
   }
   Kokkos::finalize();
 }
