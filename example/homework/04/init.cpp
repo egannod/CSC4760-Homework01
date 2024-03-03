@@ -21,9 +21,8 @@ int main(int argc, char* argv[]) {
     if(view_4(i) > val){
       val = view_4(i);
     }
-    std::cout << "val = " << *val << std::endl;
+    std::cout << "val = " << val << std::endl;
   }, result);
-  Kokkos::fence();
   std::cout << "The greatest value in the view: " << result << std::endl;
   }
   Kokkos::finalize();
