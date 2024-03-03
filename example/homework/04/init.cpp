@@ -1,5 +1,6 @@
 #include <Kokkos_Core.hpp>
 #include <cstdio>
+#include <iostream>
 
 // Do simple parallel reduce to output the maximum element in a View
 
