@@ -22,6 +22,7 @@ int main(int argc, char* argv[]) {
   }
   Kokkos::fence();
   std::cout << "View at index 0: " << myView(0) << std::endl;
+  std::cout << "View at index 1: " << myView(1) << std::endl;
   }
   Kokkos::finalize();
 }
