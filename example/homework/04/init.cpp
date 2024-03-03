@@ -13,7 +13,6 @@ int main(int argc, char* argv[]) {
 
   for(int i=0; i<view_4.extent(0); i++){
     view_4(i) = i*i;
-    std::cout << "view_4(" << i << ") = " << view_4(i) << std::endl;
   }
   
   // Do a parallel reduction
@@ -22,6 +21,7 @@ int main(int argc, char* argv[]) {
     if(view_4(i) > val){
       val = view_4(i);
     }
+    std::cout << "val = " << val << std::endl;
   }, result);
   Kokkos::fence();
   std::cout << "The greatest value in the view: " << result << std::endl;
