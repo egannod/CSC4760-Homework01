@@ -19,10 +19,10 @@ int main(int argc, char* argv[]) {
     }
   }
   Kokkos::fence();
-  std::cout << "View at index 0,0: " << myView(0,0) << std::endl;
-  std::cout << "View at index 1,1: " << myView(1,1) << std::endl;
-  std::cout << "View at index 2,2: " << myView(2,2) << std::endl;
-  std::cout << "View at index 3,3: " << myView(3,3) << std::endl;
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      std::cout << "View at index " << i << "," << j << ": " << myView(i,j) << std::endl;
+    }
   }
   Kokkos::finalize();
 }
