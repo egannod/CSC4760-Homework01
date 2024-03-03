@@ -13,14 +13,9 @@ int main(int argc, char* argv[]) {
   // Make View
   Kokkos::View<int**> myView("myView", n, m);
   // set values to 1000 * i * j;
-  Kokkos::parallel_for("iterator i", n, KOKKOS_LAMBDA(const int& i) {
-    Kokkos::parallel_for("iterator j", m, KOKKOS_LAMBDA(const int& j) {
-      myView(i,j) = 1000 * i * j;
-    });
-  });
-  //for(int i=0; i<myView.extent(0); i++){
-  //  myView(i) = 1000 * i;
-  //}
+  for(int i=0; i<myView.extent(0); i++){
+    myView(i,0) = 1000 * i;
+  }
   Kokkos::fence();
   std::cout << "View at index 0: " << myView(0,0) << std::endl;
   std::cout << "View at index 1: " << myView(1,0) << std::endl;
