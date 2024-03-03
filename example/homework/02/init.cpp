@@ -9,22 +9,23 @@ int main(int argc, char* argv[]) {
   {
   // set n and m, you can change these values
   int n = 4;
+  int m = 4;
   // Make View
   Kokkos::View<int*> myView("myView", n);
   // set values to 1000 * i * j;
-  //Kokkos::parallel_for("iterator i", n, KOKKOS_LAMBDA(const int& i) {
-  //  Kokkos::parallel_for("iterator j", m, KOKKOS_LAMBDA(const int& j) {
-  //    myView(i,j) = 1000 * i * j;
-  //  });
-  //});
-  for(int i=0; i<myView.extent(0); i++){
-    myView(i) = 1000 * i;
-  }
+  Kokkos::parallel_for("iterator i", n, KOKKOS_LAMBDA(const int& i) {
+    Kokkos::parallel_for("iterator j", m, KOKKOS_LAMBDA(const int& j) {
+      myView(i,j) = 1000 * i * j;
+    });
+  });
+  //for(int i=0; i<myView.extent(0); i++){
+  //  myView(i) = 1000 * i;
+  //}
   Kokkos::fence();
-  std::cout << "View at index 0: " << myView(0) << std::endl;
-  std::cout << "View at index 1: " << myView(1) << std::endl;
-  std::cout << "View at index 2: " << myView(2) << std::endl;
-  std::cout << "View at index 3: " << myView(3) << std::endl;
+  std::cout << "View at index 0: " << myView(0,0) << std::endl;
+  std::cout << "View at index 1: " << myView(1,0) << std::endl;
+  std::cout << "View at index 2: " << myView(2,0) << std::endl;
+  std::cout << "View at index 3: " << myView(3,0) << std::endl;
   }
   Kokkos::finalize();
 }
