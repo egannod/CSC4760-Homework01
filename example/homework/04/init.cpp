@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
   Kokkos::View<int*> view_4("view_4", 8);
 
   for(int i=0; i<view_4.extent(0); i++){
-    view_4(i) = i*i;
+    view_4(i) = i;
   }
   
   // Do a parallel reduction
