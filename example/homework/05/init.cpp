@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // Make View and create values
-  Kokkos::View<int*> view_5("view_5", 10);
+  Kokkos::View<int*> view_5("view_5", 10000);
   for(int i=0; i<view_5.extent(0); i++){
     view_5(i) = 100*i;
   }
