@@ -12,10 +12,35 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // Make View and add values
+  Kokkos::View<int**> a("a", 3, 3);
+  a(0,0) = 130;
+  a(0,1) = 137;
+  a(0,2) = 115;
+  a(1,0) = 224;
+  a(1,1) = 158;
+  a(1,2) = 187;
+  a(2,0) = 54;
+  a(2,1) = 211;
+  a(2,2) = 120;
+  Kokkos::View<int*> b("b", 3);
+  b(0) = 221;
+  b(1) = 12;
+  b(2) = 157;
+  Kokkos::View<int**> soln("soln", 3, 3);
   
   // Do a matrix add
+  for(int i=0; i<a.extent(0); i++){
+    Kokkos::parallel_for("matrix add", a.extent(1), KOKKOS_LAMBDA(const int& j){
+      soln(i,j) = a(i,j) + b(j);
+    });
+  }
   
-  // Output addition 
+  // Output addition
+  for(int i=0; i<soln.extent(0); i++){
+    for(int j=0; j<soln.extent(1); j++){
+      printf("%d ", soln(i,j));
+    }
+    printf("\n");
   }
   Kokkos::finalize();
 }
