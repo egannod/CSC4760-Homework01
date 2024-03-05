@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // Make View and create values
-  int lval;
+  int lval = 0;
   Kokkos::View<int*> view_4("view_4", 10);
 
   for(int i=0; i<view_4.extent(0); i++){
