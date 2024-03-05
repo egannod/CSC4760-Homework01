@@ -22,12 +22,12 @@ int main(int argc, char* argv[]) {
   }
   double time = timer.seconds();
 
-  Kokkos::Timer timer2;
+  timer.reset();
   Kokkos::parallel_reduce("parallel sum", view_5.extent(0), KOKKOS_LAMBDA(const int& i, int& lsum){
     lsum+=view_5(i);
   }, parallel_sum);
 
-  double parallel_time = timer2.seconds();
+  double parallel_time = timer.seconds();
   
   // Output times
   std::cout << "Sum: " << sum << " Time: " << time << std::endl;
