@@ -31,6 +31,7 @@ int main(int argc, char* argv[]) {
     // Do a matrix add
     for(int i=0; i<a.extent(0); i++){
       Kokkos::parallel_for("matrix add", a.extent(1), KOKKOS_LAMBDA(const int& j){
+        std::cout << "a(i,j): " << a(i,j) << " b(j): " << b(j) << std::endl;
         soln(i,j) = a(i,j) + b(j);
       });
     }
