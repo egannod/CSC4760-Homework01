@@ -3,9 +3,9 @@
 
 // Create a program that does matrix addition between a 2D View and a 1D View with at least one loop of parallelism.
 // For a test case:
-// a = [130, 137, 115]   b = [221]
+// a = [130, 147, 115]   b = [221]
 //     [224, 158, 187]       [12]
-//     [ 54, 211, 120]       [157]
+//     [ 54, 158, 120]       [157]
 // Extra credit: make a function and check for correct shape/dimensions
 
 int main(int argc, char* argv[]) {
@@ -14,13 +14,13 @@ int main(int argc, char* argv[]) {
     // Make View and add values
     Kokkos::View<int**> a("a", 3, 3);
     a(0,0) = 130;
-    a(0,1) = 137;
+    a(0,1) = 147;
     a(0,2) = 115;
     a(1,0) = 224;
     a(1,1) = 158;
     a(1,2) = 187;
     a(2,0) = 54;
-    a(2,1) = 211;
+    a(2,1) = 158;
     a(2,2) = 120;
     Kokkos::View<int*> b("b", 3);
     b(0) = 221;
