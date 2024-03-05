@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
   
   // Do a parallel reduction
   Kokkos::parallel_reduce("largest value", view_4.extent(0), KOKKOS_LAMBDA(const int& i, int& val){
-    if(view_4(i) > val){
+    if(val < view_4(i)){
       val = view_4(i);
     }
   }, lval);
