@@ -14,6 +14,10 @@ int main(int argc, char* argv[]) {
   for(int i=0; i<view_4.extent(0); i++){
     view_4(i) = i*i;
   }
+  // print out view
+  for(int i=0; i<view_4.extent(0); i++){
+    std::cout << "view_4(" << i << ") = " << view_4(i) << std::endl;
+  }
   
   // Do a parallel reduction
   Kokkos::parallel_reduce("largest value", view_4.extent(0), KOKKOS_LAMBDA(const int& i, int& val){
