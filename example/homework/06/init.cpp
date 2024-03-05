@@ -1,5 +1,6 @@
 #include <Kokkos_Core.hpp>
 #include <cstdio>
+#include <iostream>
 
 // Create a program that does matrix addition between a 2D View and a 1D View with at least one loop of parallelism.
 // For a test case:
@@ -34,13 +35,14 @@ int main(int argc, char* argv[]) {
       soln(i,j) = a(i,j) + b(j);
     });
   }
+  Kokkos::fence();
   
   // Output addition
   for(int i=0; i<soln.extent(0); i++){
     for(int j=0; j<soln.extent(1); j++){
-      printf("%d ", soln(i,j));
+      std::cout << soln(i,j) << " ";
     }
-    printf("\n");
+    std::cout << std::endl;
   }
   Kokkos::finalize();
 }
