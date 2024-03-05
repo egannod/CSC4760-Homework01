@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
   
   // Do a parallel reduction
   Kokkos::parallel_reduce("largest value", view_4.extent(0), KOKKOS_LAMBDA(const int& i, int& val){
-    val += view_4(i);
+    val = view_4(i);
   }, lval);
   Kokkos::fence();
   std::cout << "The largest value in the view: " << lval << std::endl;
