@@ -17,16 +17,15 @@ int main(int argc, char* argv[]) {
   int parallel_sum = 0;
 
   Kokkos::Timer timer;
-  for(int i=0; i<view_5.extent(0); i++){
-    sum += view_5(i);
-  }
-  double time = timer.seconds();
-
-  timer.reset();
   Kokkos::parallel_reduce("parallel sum", view_5.extent(0), KOKKOS_LAMBDA(const int& i, int& lsum){
     lsum+=view_5(i);
   }, parallel_sum);
+  double time = timer.seconds();
 
+  timer.reset();
+  for(int i=0; i<view_5.extent(0); i++){
+    sum += view_5(i);
+  }
   double parallel_time = timer.seconds();
   
   // Output times
