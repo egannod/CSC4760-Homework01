@@ -32,6 +32,10 @@ int main(int argc, char* argv[]) {
     //        [275, 170, 277]
     
     // Do a matrix add
+    if (a.extent(1) != b.extent(0)){
+      std::cout << "Matrix dimensions do not match for addition" << std::endl;
+      return 1;
+    }
     for(int i=0; i<a.extent(0); i++){
       Kokkos::parallel_for("matrix add", a.extent(1), KOKKOS_LAMBDA(const int& j){
         std::cout << "a(i,j): " << a(i,j) << " b(j): " << b(j) << std::endl;
