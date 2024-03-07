@@ -38,13 +38,25 @@ int main(int argc, char* argv[]) {
     }
     for(int i=0; i<a.extent(0); i++){
       Kokkos::parallel_for("matrix add", a.extent(1), KOKKOS_LAMBDA(const int& j){
-        std::cout << "a(i,j): " << a(i,j) << " b(j): " << b(j) << std::endl;
         soln(i,j) = a(i,j) + b(j);
       });
     }
     Kokkos::fence();
     
     // Output addition
+    for (int i=0; i<a.extent(0); i++){
+      for (int j=0; j<a.extent(1); j++){
+        std::cout << a(i,j) << " ";
+      }
+      std::cout << std::endl;
+    }
+    std::cout << "   +   " << std::endl;
+    for (int i=0; i<b.extent(0); i++){
+      std::cout << b(i) << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "   =   " << std::endl;
+
     for(int i=0; i<soln.extent(0); i++){
       for(int j=0; j<soln.extent(1); j++){
         std::cout << soln(i,j) << " ";
