@@ -45,9 +45,16 @@ int main(int argc, char* argv[]) {
     Kokkos::fence();
 
     // Print Results
+    std::cout << "C: ";
     for(int i=0; i<N; i++){
-      std::cout << "C(" << i << "): " << C(i) << " D(" << i << "): " << D(i) << std::endl;
+      std::cout << C(i) << " ";
     }
+    std::cout << std::endl;
+    std::cout << "D: ";
+    for(int i=0; i<N; i++){
+      std::cout << D(i) << " ";
+    }
+    std::cout << std::endl;
     std::cout << "Time0: " << time0 << " Time1: " << time1 << std::endl;
 
   }
