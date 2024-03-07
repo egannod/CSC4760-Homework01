@@ -27,6 +27,9 @@ int main(int argc, char* argv[]) {
     b(1) = 12;
     b(2) = 157;
     Kokkos::View<int**> soln("soln", 3, 3);
+    // soln = [351, 159, 272]
+    //        [445, 170, 344]
+    //        [275, 170, 277]
     
     // Do a matrix add
     for(int i=0; i<a.extent(0); i++){
