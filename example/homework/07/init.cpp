@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     Kokkos::Timer timer;
     double times[7];
 
-    // Parallel Scan Prefix Sum
+    // Parallel Scan Several times for results
     for (int i=0; i<7; i++){
       timer.reset();
       Kokkos::parallel_scan("scan a", N, KOKKOS_LAMBDA(const int& i, int& update, const bool& final){
@@ -45,6 +45,7 @@ int main(int argc, char* argv[]) {
     }
     std::cout << std::endl;
 
+    // Print Times of each Parallel scan
     for (int i=0; i<7; i++){
       std::cout << "Time " << i << ": " << times[i] << std::endl;
     }
