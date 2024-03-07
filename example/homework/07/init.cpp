@@ -48,6 +48,7 @@ int main(int argc, char* argv[]) {
     for(int i=0; i<N; i++){
       std::cout << "C(" << i << "): " << C(i) << " D(" << i << "): " << D(i) << std::endl;
     }
+    std::cout << "Time0: " << time0 << " Time1: " << time1 << std::endl;
 
   }
   Kokkos::finalize();
