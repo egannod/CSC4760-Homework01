@@ -8,7 +8,6 @@
 //     [ 54, 158, 120]       [157]
 // Extra credit: make a function and check for correct shape/dimensions
 
-Kokkos::View matrix_multiply(Kokkos::View<int**> a, Kokkos::View<int*> b);
 
 int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
@@ -32,7 +31,15 @@ int main(int argc, char* argv[]) {
     // soln = [39896, 59189, 46499]
   
   // Do a matrix multiply
-  soln = matrix_multiply(a, b);
+  if (a.extent(1) != b.extent(0)){
+    std::cout << "Matrix dimensions do not match for multiplication" << std::endl;
+    return 1;
+  }
+  for(int i=0; i<a.extent(0); i++){
+    Kokkos::parallel_for("matrix multiply", a.extent(1), KOKKOS_LAMBDA(const int& j){
+      soln(i) += a(j,i) * b(j);
+    });
+  }
   
   // Output multiplication
   for (int i=0; i<a.extent(0); i++){
@@ -51,18 +58,4 @@ int main(int argc, char* argv[]) {
   }
   }
   Kokkos::finalize();
-}
-
-Kokkos::View matrix_multiply(Kokkos::View<int**> a, Kokkos::View<int*> b){
-  if (a.extent(1) != b.extent(0)){
-    std::cout << "Matrix dimensions do not match for multiplication" << std::endl;
-    return Kokkos::View<int*>();
-  }
-  Kokkos::View<int*> soln("soln", b.extent(0));
-  for(int i=0; i<a.extent(0); i++){
-    Kokkos::parallel_for("matrix multiply", a.extent(1), KOKKOS_LAMBDA(const int& j){
-      soln(i) += a(j,i) * b(j);
-    });
-  }
-  return soln;
 }
