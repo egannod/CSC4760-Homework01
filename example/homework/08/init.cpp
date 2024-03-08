@@ -3,9 +3,9 @@
 
 // Create a program that does matrix multiply between a 2D View and a 1D View with at least one loop of parallelism.
 // For a test case:
-// a = [130, 137, 115]   b = [221]
+// a = [130, 147, 115]   b = [221]
 //     [224, 158, 187]       [12]
-//     [ 54, 211, 120]       [157]
+//     [ 54, 158, 120]       [157]
 // Extra credit: make a function and check for correct shape/dimensions
 
 int main(int argc, char* argv[]) {
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
   // Do a matrix multiply
   for(int i=0; i<a.extent(0); i++){
     Kokkos::parallel_for("matrix multiply", a.extent(1), KOKKOS_LAMBDA(const int& j){
-      soln(i) += a(i,j) * b(j);
+      soln(i) += a(j,i) * b(j);
     });
   }
   
